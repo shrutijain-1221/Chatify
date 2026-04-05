@@ -11,9 +11,9 @@ if(!email || !password){
 }
 const user=await User.findOne({email})
 if(!user){
-    res.status(400).json({message:"User doesn't exists"})
+  return  res.status(400).json({message:"User doesn't exists"})
 }
-const checkPassowrd=await bcrypt.compare(password,user?.password)
+const checkPassowrd=await bcrypt.compare(password,user.password)
 if(!checkPassowrd){
  return res.status(400).json({ message: "Invalid Creditionals" });
 }
@@ -22,7 +22,7 @@ genrateToken(user?._id,res)
         _id:user?._id,
         fullName:user?.fullName,
         email:user?.email,
-        prodilePic:user?.profilePic,
+        profilePic: user?.profilePic,
         createdAt: user?.createdAt,
   updatedAt: user?.updatedAt
 
@@ -65,7 +65,7 @@ if(newuser){
         _id:newuser?._id,
         fullName:newuser?.fullName,
         email:newuser?.email,
-        prodilePic:newuser?.profilePic
+        profilePic:newuser?.profilePic
 
     })
 }else{
