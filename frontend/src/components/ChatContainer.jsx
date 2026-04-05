@@ -10,7 +10,7 @@ import { useRef } from 'react'
 const ChatContainer = () => {
     const {messages,getMessages,isMessageLoading,selectedUser,subscribeToMessages,unSubscribeToMessages}=useChatStore()
     const {authUser}=useAuthStore()
-    const messageEndRef=useRef(null)
+const messageEndRef=useRef(null)
     useEffect(()=>{
 if(messageEndRef.current && messages){
     messageEndRef.current.scrollIntoView({behavior:"smooth"})
